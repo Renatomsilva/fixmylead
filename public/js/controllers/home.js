@@ -40,12 +40,6 @@ function HomeController($scope, toastr, $cookies) {
         order : {
           status : "em andamento"
         }
-      },{
-        placa : "AAA-213",
-        modelo : "MAVERIC",
-        order : {
-          status : "em andamento"
-        }
       }]
 
     }
