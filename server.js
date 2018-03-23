@@ -16,16 +16,15 @@ const express = require('express')
 const indexRoute = require('./app/routes/index');
 const oficina = require('./app/routes/oficina');
 
+
 require('dotenv').load({ silent: true });
 
 nconf.use('memory');
 
-process.env.DATABASE_HOST = "teste";
-process.env.DATABASE_NAME = "teste";
-process.env.DATABASE_PASSWORD = "teste";
-process.env.CACHE_URL = "teste";
-process.env.CACHE_PORT = "teste";
-process.env.CACHE_PASSWORD = "teste";
+process.env.DATABASE_HOST = "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+process.env.DATABASE_USER = "a1vky6b482hhzucr";
+process.env.DATABASE_NAME = "dwiivdjerj47osku";
+process.env.DATABASE_PASSWORD = "w6ht6ps7tkcl9pau";
 
 app.use(compression());
 app.use(cookieParser());
@@ -39,6 +38,6 @@ indexRoute(app);
 oficina(app);
 
 app.listen(process.env.PORT || 4000, function () {
-    logger.info("app funcionando", process.env.NODE_ENV, process.env.PORT || 4000);
+    logger.info("app funcionando");
 });
 

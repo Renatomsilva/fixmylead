@@ -31,8 +31,12 @@
     "hide-powered-by": "^1.0.0",
     "nconf": "^0.10.0",
     "path": "^0.12.7",
+    "promise-mysql": "^3.2.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "winston": "^2.4.0"
+    "winston": "^2.4.1"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.1"
   }
 }
