@@ -6,9 +6,15 @@ const Connection = require('../config/database');
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        res.sendFile('./public/index.html', { root: '.' });
+        res.render("index", {
+            page: { url: 'index' },
+        });
+    });
 
-        const conn = Connection.getSqlConnection();
+    app.get('/loja', function (req, res) {
+        res.render("loja", {
+            page: { url: 'loja' },
+        });
     });
     
 }
