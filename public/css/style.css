@@ -119,4 +119,9 @@ body {
     float:none;
     padding: 2px 10px;
     margin-left: 30px;
-}
+  }
+
+ .car {
+   width: 120px;
+   height: 120px;
+ }

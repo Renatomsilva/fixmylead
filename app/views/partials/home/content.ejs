@@ -1,0 +1,29 @@
+<div class="container" ng-controller="HomeController as vm" ng-init="vm.listaCarros()">
+    <div class="hero-content">
+      <div class="hero-content-inner">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+            <h3 class="page-header">Lista de Veiculos</h1>
+          </div>
+          <div class="col-md-2 col-md-offset-5">
+              <div class="col-md-6" ng-repeat="carro in vm.carros">
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object car" src="/images/sample/car/car.jpg" alt="...">
+                      </a>
+                    </div>
+                    <div  class="media-body" >
+                       <label for="email">Placa / Modelo</label><br>
+                       <spam> {{carro.placa}} / {{carro.modelo}}</spam><br>
+                       <label for="email">Status</label><br>
+                       <spam>{{carro.order.status}}</spam>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/controllers/home.js"></script>

@@ -17,5 +17,16 @@ module.exports = function (app) {
         });
     });
     
+    app.get('/home', function (req, res) {
+        res.render("home", {
+            page: { url: 'home' },
+        });
+    });
+
+    app.get('/carro', function (req, res) {
+        res.render("carro", {
+            page: { url: 'carro' },
+        });
+    });
 }
 
