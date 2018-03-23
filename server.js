@@ -29,6 +29,7 @@ process.env.DATABASE_PASSWORD = "w6ht6ps7tkcl9pau";
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('./public'));
 
