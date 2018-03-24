@@ -5,8 +5,8 @@
         </div>
         <div class="col-md-2 col-md-offset-5">
             <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
-                <label for="plate" class="font">Placa</label>
-                <input type="searchPlace" class="form-control client-placa" id="searchPlace" ng-model="vm.query.plate">
+                <label for="plate" class="font" >Placa</label>
+                <input type="searchPlace" mask="AAA-9999" class="form-control client-placa" id="searchPlace" ng-model="vm.query.plate">
                 </br>
                 <button type="submit" class="form-control client-search">Pesquisar</button>
             </form>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="quote">Orçamento</label>
-                    <input type="text" class="form-control" name="quote" ng-model="vm.orcamento.orcamento">
+                    <input type="text" class="form-control" name="quote" money-mask money-mask-prepend="R$" ng-model="vm.orcamento.orcamento">
                 </div>
                 <div class="form-group">
                     <label for="deadline">Prazo Estimado</label>
@@ -45,10 +45,10 @@
                     </select>
                 </div>
                 <div class="form-group" ng-show="!vm.find">
-                    <button type="submit" class="form-control">Salvar</button>
+                    <button type="submit" class="form-control client-search">Salvar</button>
                 </div>
                 <div class="form-group" ng-show="vm.find">
-                    <button type="submit" class="form-control">Finalizar Orçamento</button>
+                    <button type="submit" class="form-control client-search">Finalizar Orçamento</button>
                 </div>
             </form>
         </div>

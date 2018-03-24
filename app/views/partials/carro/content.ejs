@@ -6,7 +6,7 @@
     <div class="col-md-2 col-md-offset-5">
       <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
         <label for="searchPlace font">Placa</label>
-        <input type="searchPlace" class="form-control client-placa" id="searchPlace" ng-model="vm.query.plate">
+        <input type="searchPlace" class="form-control client-placa" mask="AAA-9999"  id="searchPlace" ng-model="vm.query.plate">
         </br>
         <button type="submit" class="form-control client-search">Pesquisar</button>
       </form>
@@ -39,10 +39,10 @@
           <input type="text" class="form-control" name="placa" ng-model="vm.carro.placa">
         </div>
         <div class="form-group" ng-show="!vm.find">
-          <button type="submit" class="form-control">Salvar</button>
+          <button type="submit" class="form-control client-search">Salvar</button>
         </div>
         <div class="form-group" ng-show="vm.find">
-            <button type="button" ng-click="vm.newQuote(vm.carro)" class="form-control">Orçamento</button>
+            <button type="button" ng-click="vm.newQuote(vm.carro)" class="form-control client-search">Orçamento</button>
           </div>
         </br>
         </br>

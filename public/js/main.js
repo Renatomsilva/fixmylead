@@ -1,3 +1,3 @@
 
-angular.module('fixMyLead', ['ngRoute', 'ngCookies', 'toastr']);
+angular.module('fixMyLead', ['ngRoute', 'ngCookies', 'toastr', 'ngMask', 'rw.moneymask']);
 
