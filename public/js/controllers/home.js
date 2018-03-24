@@ -1,8 +1,8 @@
 angular.module('fixMyLead').controller('HomeController', HomeController);
 
-HomeController.$inject = ['$scope', 'toastr', '$cookies'];
+HomeController.$inject = ['$scope', 'toastr', '$cookies', '$http'];
 
-function HomeController($scope, toastr, $cookies) {
+function HomeController($scope, toastr, $cookies, $http) {
 
     var vm = this;
 
@@ -10,37 +10,18 @@ function HomeController($scope, toastr, $cookies) {
 
     function listaCarros () {
 
-      vm.carros = [{
-        placa : "AAA-123",
-        modelo : "CIVIC",
-        order : {
-          status : "em andamento"
-        }
-      },{
-        placa : "AAA-456",
-        modelo : "FUSCA",
-        order : {
-          status : "em andamento"
-        }
-      },{
-        placa : "AAA-982",
-        modelo : "MAREA",
-        order : {
-          status : "em andamento"
-        }
-      },{
-        placa : "AAA-213",
-        modelo : "MAVERIC",
-        order : {
-          status : "em andamento"
-        }
-      },{
-        placa : "AAA-213",
-        modelo : "MAVERIC",
-        order : {
-          status : "em andamento"
-        }
-      }]
-
+      var req = {
+        method: 'GET',
+        url: '/service/',
+        dataType: 'json',
+      }
+  
+      return $http(req)
+        .then(function (res) {
+          vm.carros = res.data;
+        })
+        .catch(function (err) {
+          console.log(err);
+        })
     }
 }

@@ -7,8 +7,8 @@ const Promise = require('bluebird');
 
 module.exports = function (app) {
     app.post("/client/insert", function (req, res) {
-        const query = 'INSERT INTO tb_Cliente (nome, cpf, email, telefone) VALUES (?, ?, ?, ?);';
-        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.name, req.body.cpf, req.body.email, req.body.phone])
+        const query = 'INSERT INTO tb_Cliente (nome, email, telefone) VALUES (?, ?, ?);';
+        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.name, req.body.email, req.body.phone])
           .then(() => {
             res.status(200).send({
                 'success': true,
@@ -20,7 +20,7 @@ module.exports = function (app) {
     });
 
     app.get("/client/:name", function (req, res) {
-        const query = 'SELECT nome, cpf, email, telefone, dataInclusao FROM tb_Cliente WHERE nome LIKE ?;';
+        const query = 'SELECT nome, email, telefone, dataInclusao FROM tb_Cliente WHERE nome LIKE ?;';
         return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, '%' + [req.params.name] + '%')
           .then((rows) => {
             res.status(200).send(rows);
@@ -43,8 +43,8 @@ module.exports = function (app) {
     });
 
     app.get("/vehicle", function (req, res) {
-        const query = 'SELECT C.nome, C.email, C.cpf, C.telefone, V.placa, V.marca, V.modelo, V.versao, V.ano FROM tb_Veiculo V JOIN tb_Cliente C ON V.idCliente = C.idCliente WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (C.cpf LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null);';
-        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [ ('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null), ('%' + req.query.cpf + '%' || null), (req.query.cpf || null), ('%' + req.query.plate + '%' || null), (req.query.plate || null), ('%' + req.query.make + '%' || null), (req.query.make || null), ('%' + req.query.model + '%' || null), (req.query.model || null), ( '%' + req.query.version + '%' || null), (req.query.version || null), ('%' + req.query.year + '%' || null), ( req.query.year || null) ])
+        const query = 'SELECT C.nome, C.email, C.telefone, V.placa, V.marca, V.modelo, V.versao, V.ano FROM tb_Veiculo V JOIN tb_Cliente C ON V.idCliente = C.idCliente WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null);';
+        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [ ('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null), ('%' + req.query.plate + '%' || null), (req.query.plate || null), ('%' + req.query.make + '%' || null), (req.query.make || null), ('%' + req.query.model + '%' || null), (req.query.model || null), ( '%' + req.query.version + '%' || null), (req.query.version || null), ('%' + req.query.year + '%' || null), ( req.query.year || null) ])
           .then((rows) => {
             res.status(200).send(rows);
           })).catch(err => {
@@ -66,8 +66,8 @@ module.exports = function (app) {
     });
 
     app.get("/service", function (req, res) {
-        const query = 'select C.nome, C.email, C.cpf, C.telefone, V.marca, V.modelo, V.versao, V.ano, V.placa, OS.descricao, OS.orcamento, OS.prazoEstimado from tb_OrdemServico OS JOIN tb_Veiculo V ON OS.idVeiculo = V.idVeiculo JOIN tb_Cliente C ON V.idCliente = C.idCliente WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (C.cpf LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null);';
-        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [ ('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null), ('%' + req.query.cpf + '%' || null), (req.query.cpf || null), ('%' + req.query.plate + '%' || null), (req.query.plate || null), ('%' + req.query.make + '%' || null), (req.query.make || null), ('%' + req.query.model + '%' || null), (req.query.model || null), ( '%' + req.query.version + '%' || null), (req.query.version || null), ('%' + req.query.year + '%' || null), ( req.query.year || null) ])
+        const query = 'select C.nome, C.email, C.telefone, V.marca, V.modelo, V.versao, V.ano, V.placa, OS.descricao, OS.orcamento, OS.prazoEstimado, SC.descricao as status from tb_OrdemServico OS JOIN tb_Veiculo V ON OS.idVeiculo = V.idVeiculo JOIN tb_Cliente C ON V.idCliente = C.idCliente JOIN tb_statusConserto SC ON OS.idStatus = SC.idStatus AND SC.Ativo = 1 WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null);';
+        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [ ('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null), ('%' + req.query.plate + '%' || null), (req.query.plate || null), ('%' + req.query.make + '%' || null), (req.query.make || null), ('%' + req.query.model + '%' || null), (req.query.model || null), ( '%' + req.query.version + '%' || null), (req.query.version || null), ('%' + req.query.year + '%' || null), ( req.query.year || null) ])
           .then((rows) => {
             res.status(200).send(rows);
           })).catch(err => {
