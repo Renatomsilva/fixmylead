@@ -1,29 +1,24 @@
-angular.module('fixMyLead').controller('OrdemController', OrdemController);
+angular.module('fixMyLead').controller('OrcamentoStepController', OrcamentoStepController);
 
-OrdemController.$inject = ['$scope', 'toastr', '$cookies', '$http' , '$location'];
+OrcamentoStepController.$inject = ['$scope', 'toastr', '$cookies', '$http' , '$location'];
 
-function OrdemController($scope, toastr, $cookies, $http, $location) {
+function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
 
   var vm = this;
 
-  vm.save = save;
-  vm.search = search;
-  vm.viewCarro = false;
-  vm.orcamento = { idOrdemServico : 1};
+  vm.chageStatus = changeStatus;
+  vm.compare = compare;
+  vm.orcamento = {};
 
-  function save(carro) {
+  function changeStatus(orcamento, status) {
 
     var req = {
       method: 'POST',
-      url: '/vehicle/insert',
+      url: '/orcamento/update',
       dataType: 'json',
       data: {
-        clientId : parseInt(carro.clientId),
-        plate : carro.placa,
-        make : carro.marca,
-        model : carro.modelo,
-        version : carro.versao,
-        year : carro.ano,
+        idOrdemServico : parseInt(orcamento.idOrdemServico),
+        idStatus : status
       }
     }
 
@@ -31,7 +26,7 @@ function OrdemController($scope, toastr, $cookies, $http, $location) {
       .then(function (res) {
         if(res.data.success){
           toastr.success('Carro cadastrado com sucesso', 'Sucesso');
-          vm.carro = {};
+          
         }else
           toastr.success('Erro ao cadastrar o carro', 'Sucesso');
       })
@@ -42,33 +37,37 @@ function OrdemController($scope, toastr, $cookies, $http, $location) {
 
   }
 
-  function search(query) {
+
+  function getOrcamento(orcamento) {
+
     var req = {
       method: 'GET',
-      url: '/vehicle?plate=' + query.plate,
+      url: '/service?idOrdemServico' + parseInt(orcamento.idOrdemServico),
       dataType: 'json',
     }
 
     return $http(req)
       .then(function (res) {
-        if(res.data.length){  
-          vm.find = true;
-          vm.carro = res.data[0];
-        }
-        else {
-          vm.carro.placa = query.plate ;
-          vm.find = false;
-        }
-        vm.viewCarro = true;
-        console.log(res.data);
+        if(res.data){
+          vm.orcamento = res.data[0];
+        }else
+          toastr.error('Erro ao Buscar Orçamento', 'Erro');
       })
       .catch(function (err) {
         console.log(err);
       })
+
+  }
+  
+  function compare(status , compare){
+      return status === compare ? true : false; 
   }
 
+  
+
   function init(){
-    vm.carro.clientId = $location.absUrl().split('/')[4] || null ;
+    vm.orcamento.idOrdemServico = $location.absUrl().split('/')[4] || null ;
+    getOrcamento(vm.orcamento);
   }
 
   init();
