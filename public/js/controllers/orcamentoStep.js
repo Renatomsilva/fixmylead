@@ -18,7 +18,10 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
       dataType: 'json',
       data: {
         idQuote : parseInt(orcamento.idOrdemServico),
-        idStatus : status
+        idStatus : status,
+        name: orcamento.nome,
+        make: orcamento.marca,
+        model: orcamento.modelo
       }
     }
 
@@ -39,7 +42,7 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
 
     var req = {
       method: 'GET',
-      url: '/service?idOrdemServico' + parseInt(orcamento.idOrdemServico),
+      url: '/service?idOrdemServico=' + parseInt(orcamento.idOrdemServico),
       dataType: 'json',
     }
 

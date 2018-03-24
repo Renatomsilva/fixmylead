@@ -9,13 +9,13 @@
               <div class="col-md-6" ng-repeat="carro in vm.carros">
                   <div class="media">
                     <div class="media-left">
-                      <a href="#">
+                      <a href="/orcamento/{{carro.idOrdemServico}}/step">
                         <img class="media-object car" src="/images/sample/car/car.jpg" alt="...">
                       </a>
                     </div>
                     <div  class="media-body" >
-                       <label for="email">Placa / Modelo</label><br>
-                       <spam> {{carro.placa}} / {{carro.modelo}}</spam><br>
+                       <label for="email">Placa / Veículo</label><br>
+                       <spam> {{carro.placa}} / {{carro.marca}} {{carro.modelo}}</spam><br>
                        <label for="email">Status</label><br>
                        <spam>{{carro.status}}</spam>
                     </div>

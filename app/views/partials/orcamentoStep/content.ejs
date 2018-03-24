@@ -4,41 +4,67 @@
       <h2 class="page-header">Orcamento Alterar Status</h1>
     </div>
     <div class="col-md-2 col-md-offset-5">
-      <form class="form-inline" ng-submit="vm.save(vm.carro)" name="saveForm"  ng-if="vm.orcamento.idStatus">
+      <form class="form-inline" ng-submit="vm.save(vm.carro)" name="saveForm" ng-if="vm.orcamento.idStatus">
         <div class="form-group">
           <label for="ordem">Orçamento Número</label>
           <span ng-bind="vm.orcamento.idOrdemServico"></span>
         </div>
         <div class="form-group">
-            <a ng-click="vm.chageStatus(vm.orcamento, 1)">
-                <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,1)">
-                <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,1)">
-              </a>
+          <a ng-click="vm.chageStatus(vm.orcamento, 1)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,1)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,1)">
+          </a>
           <label for="marca">Entrada</label>
         </div>
         <div class="form-group">
-            <a ng-click="vm.chageStatus(vm.orcamento, 2)">
-                <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,2)">
-                <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,2)">
-              </a>
+          <a ng-click="vm.chageStatus(vm.orcamento, 2)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,2)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,2)">
+          </a>
           <label for="marca">Em Análise</label>
         </div>
-
         <div class="form-group">
-            <a ng-click="vm.chageStatus(vm.orcamento, 3)">
-                <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,3)">
-                <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,3)">
-              </a>
-            <label for="marca">Orçamento Aceito</label>
- 
-          </div>
-          <div class="form-group">
-              <a ng-click="vm.chageStatus(vm.orcamento, 4)">
-                  <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,4)">
-                <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,4)">
-                </a>
-              <label for="marca">Retirada</label>
-            </div>
+          <a ng-click="vm.chageStatus(vm.orcamento, 3)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,3)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,3)">
+          </a>
+          <label for="marca">Orçamento aceito</label>
+        </div>
+        <div class="form-group">
+          <a ng-click="vm.chageStatus(vm.orcamento, 4)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,4)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,4)">
+          </a>
+          <label for="marca">Retirada</label>
+        </div>
+        <div class="form-group">
+          <a ng-click="vm.chageStatus(vm.orcamento, 5)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,5)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,5)">
+          </a>
+          <label for="marca">Início do conserto</label>
+        </div>
+        <div class="form-group">
+          <a ng-click="vm.chageStatus(vm.orcamento, 6)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,6)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,6)">
+          </a>
+          <label for="marca">Aguardando peças</label>
+        </div>
+        <div class="form-group">
+          <a ng-click="vm.chageStatus(vm.orcamento, 7)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,7)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,7)">
+          </a>
+          <label for="marca">Em execução</label>
+        </div>
+        <div class="form-group">
+          <a ng-click="vm.chageStatus(vm.orcamento, 8)">
+            <img src="/images/content/status_1.png" class="gray" ng-show="!vm.compare(vm.orcamento.idStatus,8)">
+            <img src="/images/content/status_1.png" ng-show="vm.compare(vm.orcamento.idStatus,8)">
+          </a>
+          <label for="marca">Conserto finalizado</label>
+        </div>
         </br>
         </br>
         </br>

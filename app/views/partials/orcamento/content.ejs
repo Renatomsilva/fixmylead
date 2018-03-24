@@ -32,8 +32,16 @@
                 </div>
                 <div class="form-group">
                     <label for="status">Status</label>
-                    <select class="form-control" ng-init="vm.populateCombos()" ng-options="item.idStatus as item.descricao for item in vm.listStatus track by item.idStatus" name="status" ng-model="vm.orcamento.idStatus">
-                            <option value='' selected>--- Selecione o Status ---</option>
+                    <select class="form-control" name="status" ng-model="selected">
+                            <option value="">--- Selecione o Status ---</option>
+                            <option value="1">Entrada</option>
+                            <option value="2">Em análise</option>
+                            <option value="3">Aguardando aceite de orçamento</option>
+                            <option value="4">Aguardando retirada</option>
+                            <option value="5">Início conserto</option>
+                            <option value="6">Aguardando peças</option>
+                            <option value="7">Em execução</option>
+                            <option value="8">Conserto finalizado, aguardando retirada</option>
                     </select>
                 </div>
                 <div class="form-group" ng-show="!vm.find">

@@ -69,7 +69,7 @@ module.exports = function (app) {
   });
 
   app.get("/service", function (req, res) {
-    const query = 'select C.nome, C.email, C.telefone, V.marca, V.modelo, V.versao, V.ano, V.placa, OS.descricao, OS.orcamento, OS.prazoEstimado, OS.idOrdemServico as idOrdemServico,  SC.idStatus as idStatus, SC.descricao as status from tb_OrdemServico OS JOIN tb_Veiculo V ON OS.idVeiculo = V.idVeiculo JOIN tb_Cliente C ON V.idCliente = C.idCliente JOIN tb_statusConserto SC ON OS.idStatus = SC.idStatus AND SC.Ativo = 1 WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null) AND (C.idCliente LIKE ? OR ? is null) AND (OS.idOrdemServico LIKE ? OR ? is null);';
+    const query = 'select C.nome, C.email, C.telefone, V.idVeiculo, V.marca, V.modelo, V.versao, V.ano, V.placa, OS.descricao, OS.orcamento, OS.prazoEstimado, OS.idOrdemServico as idOrdemServico,  SC.idStatus as idStatus, SC.descricao as status from tb_OrdemServico OS JOIN tb_Veiculo V ON OS.idVeiculo = V.idVeiculo JOIN tb_Cliente C ON V.idCliente = C.idCliente JOIN tb_statusConserto SC ON OS.idStatus = SC.idStatus AND SC.Ativo = 1 WHERE (C.nome LIKE ? OR ? is null) AND (C.email LIKE ? OR ? is null) AND (V.placa LIKE ? OR ? is null) AND (V.marca LIKE ? OR ? is null) AND (V.modelo LIKE ? OR ? is null) AND (V.versao LIKE ? OR ? is null) AND (V.ano LIKE ? OR ? is null) AND (C.idCliente LIKE ? OR ? is null) AND (OS.idOrdemServico LIKE ? OR ? is null);';
     return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null), ('%' + req.query.plate + '%' || null), (req.query.plate || null), ('%' + req.query.make + '%' || null), (req.query.make || null), ('%' + req.query.model + '%' || null), (req.query.model || null), ('%' + req.query.version + '%' || null), (req.query.version || null), ('%' + req.query.year + '%' || null), (req.query.year || null), ('%' + req.query.idCliente + '%' || null), (req.query.idCliente || null), ('%' + req.query.idOrdemServico + '%' || null), (req.query.idOrdemServico || null)])
       .then((rows) => {
         res.status(200).send(rows);
@@ -114,32 +114,58 @@ module.exports = function (app) {
 
     const idStatus = req.body.idStatus;
     const idQuote = req.body.idQuote;
+    const name = req.body.name;
+    const make = req.body.make;
+    const model = req.body.model;
     let mensagem = "";
 
     switch (idStatus) {
       case 1:
-        mensagem = "Teste 1";
+        mensagem = `Olá ${name}, obrigado pela preferência!
+        Logo iniciaremos a análise e enviaremos um orçamento para seu ${make} ${model}!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 2:
-        mensagem = "Teste 2";
+        mensagem = `Olá ${name}, iniciamos a análise do seu veículo!
+        Nas próximas horas enviaremos seu orçamento!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 3:
-        mensagem = "Teste 3";
+        mensagem = `Olá ${name}, o orçamento do seu ${make} ${model} 
+        pode ser visualizado aqui: http://www.globo.com
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 4:
-        mensagem = "Teste 4";
+        mensagem = `Olá ${name}, conforme a negativa do aceite do orçamento, 
+        seu veículo ${make} ${model} está aguardando a sua retirada!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 5:
-        mensagem = "Teste 5";
+        mensagem = `Olá ${name}, iniciamos o conserto do seu ${make} ${model}!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 6:
-        mensagem = "Teste 6";
+        mensagem = `Olá ${name}, infelizmente tivemos que fazer uma pausa no andamento do seu ${make} ${model}
+        por falta de peças! Mas não se preocupe, elas já foram encomendadas e estão à caminho!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 7:
-        mensagem = "Teste 7";
+        mensagem =  `Olá ${name}, o conserto do seu ${make} ${model} está em andamento!
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
       case 8:
-        mensagem = "Teste 8";
+        mensagem = `Olá ${name}, pronto! 
+        Concluímos o conserto do seu ${make} ${model}!
+        Estamos abertos de Segunda à Sexta das 8h às 18h e aos Sábados das 8h às 13h
+        Mecânica FixMyLead
+        Pwd by Webmotors`;
         break;
     }
 

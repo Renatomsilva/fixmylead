@@ -23,7 +23,7 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
         quote: orcamento.orcamento,
         deadline: orcamento.prazoEstimado,
         vehicleId: parseInt(orcamento.vehicleId),
-        statusId: parseInt(orcamento.idStatus)
+        statusId: parseInt($scope.selected)
       }
     }
 
@@ -56,6 +56,7 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
           vm.find = false;
         }
         vm.viewOrcamento = true;
+        $scope.selected = vm.orcamento.idStatus.toString();
       })
       .catch(function (err) {
         console.log(err);
