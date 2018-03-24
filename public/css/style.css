@@ -6,6 +6,7 @@
 body {
   padding-top: 50px;
   background: #f2f2f2;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 
@@ -211,7 +212,7 @@ margin-left: -40px;
   border-width: thin;
   background: #fff;
   color : #827575;
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 5px;
   margin-left : -130px;
   border: 2px solid #E8E8E8;
@@ -227,7 +228,8 @@ margin-left: -40px;
 .home-car ul .dias{
   color : #827575;
   padding: 5px;
-  margin-left : 50px;
+  margin-left : 90px;
+  margin-top: 13px;
 }
 
 .home-car ul .mecanico{
@@ -239,7 +241,7 @@ margin-left: -40px;
 .home-car ul .nome{
   color : #827575;
   padding: 5px;
-  margin-left : 50px;
+  margin-left : 35px;
 }
 
 .navbar-header {

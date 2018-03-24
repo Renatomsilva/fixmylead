@@ -22,19 +22,17 @@
                         <ul class="media-left">
                             <li class="media-left ano font">{{carro.ano}} / {{carro.ano}}</li>
                             <li class="media-left placa"> {{carro.placa}}</li>
-                            <li class="media-left dias fa fa-clock" ng-bind=" vm.setDays(carro.prazoEstimado)" > </li>
+                            <li class="media-left dias" > <span class="fas fa-clock font" ng-bind=" vm.setDays(carro.prazoEstimado)"></span></li>
                        
                     </div>
                   <div class="row">
                       <div class="media-left all">
                           <ul class="media-left">
-                              <li class="media-left nome fas fa-user font"> {{carro.nome}}</li>
-                              <li class="media-left mecanico fas fa-wrench font"> Marcio</li> 
+                              <li class="media-left nome"> <span class="fas fa-user font"></span> {{carro.nome}}</li>
+                              <li class="media-left mecanico"><span class="fas fa-wrench font"></span>  Marcio</li> 
                       </div>
                   </div>
-          
                 </div>
-
           </div>
           <br><br><br>
         </div>
