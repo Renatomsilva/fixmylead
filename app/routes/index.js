@@ -29,15 +29,15 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/ordem', function (req, res) {
-        res.render("ordem", {
-            page: { url: 'ordem' }
-        });
-    });
-
     app.get('/cliente', function (req, res) {
         res.render("cliente", {
             page: { url: 'cliente' },
+        });
+    });
+
+    app.get('/orcamento/:orcamento/step', function (req, res) {
+        res.render("orcamentoStep", {
+            page: { url: 'orcamentoStep' },
         });
     });
 }

@@ -1,0 +1,41 @@
+<div ng-controller="OrcamentoStepController as vm">
+    <div class="row" ng-show="vm.viewCarro">
+      <div class="col-md-2 col-md-offset-5">
+        <h2 class="page-header">Orcamento Alterar Status</h1>
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <form class="form-inline" ng-submit="vm.save(vm.carro)" name="saveForm">
+          <div class="form-group">
+            <label for="marca">Númento</label>
+            <span ng-bind="vm.orcamento.idOrdemServico"></span>
+          </div>
+          <div class="form-group">
+            <label for="marca">Orçamento Aprovado</label>
+            <img src="/images/content/status_1.png">
+          </div>
+          <div class="form-group">
+            <label for="marca">Versão</label>
+            <input type="text" class="form-control" name="versao" ng-model="vm.orcamento.versao">
+          </div>
+          <div class="form-group">
+            <label for="marca">Ano</label>
+            <input type="text" class="form-control" name="ano" ng-model="vm.orcamento.ano">
+          </div>
+          <div class="form-group">
+            <label for="marca">Placa</label>
+            <input type="text" class="form-control" name="placa" ng-model="vm.orcamento.placa">
+          </div>
+          <div class="form-group" ng-show="!vm.find">
+            <button type="submit" class="form-control">Salvar</button>
+          </div>
+          <div class="form-group" ng-show="vm.find">
+              <button type="submit" class="form-control">Orçamento</button>
+            </div>
+          </br>
+          </br>
+          </br>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="js/controllers/orcamentoStep.js"></script>

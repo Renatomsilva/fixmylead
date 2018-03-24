@@ -9,7 +9,7 @@ function OrdemController($scope, toastr, $cookies, $http, $location) {
   vm.save = save;
   vm.search = search;
   vm.viewCarro = false;
-  vm.carro = {};
+  vm.orcamento = { idOrdemServico : 1};
 
   function save(carro) {
 
