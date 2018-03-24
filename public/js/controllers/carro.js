@@ -9,6 +9,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
   vm.save = save;
   vm.search = search;
   vm.viewCarro = false;
+  vm.carro = {};
 
   function save(carro) {
 
@@ -17,7 +18,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
       url: '/vehicle/insert',
       dataType: 'json',
       data: {
-        clientId : carro.clientId,
+        clientId : parseInt(carro.clientId),
         plate : carro.placa,
         make : carro.marca,
         model : carro.modelo,
@@ -54,9 +55,8 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
           vm.carro = res.data[0];
         }
         else {
-          vm.carro = { plate : query.plate } ;
+          vm.carro.placa = query.plate ;
           vm.find = false;
-          vm.carro = {};
         }
         vm.viewCarro = true;
         console.log(res.data);
@@ -67,7 +67,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
   }
 
   function init(){
-    vm.carro = { clientId : $location.absUrl().split('/')[4] || null}
+    vm.carro.clientId = $location.absUrl().split('/')[4] || null ;
   }
 
   init();
