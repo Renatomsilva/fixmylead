@@ -86,4 +86,14 @@ module.exports = function (app) {
             res.status(200).send(err);
           })
     });
+
+    app.get("/phonebyquote", function (req, res) {
+      const query = 'select C.telefone from tb_Cliente C JOIN tb_Veiculo V ON C.idCliente = V.idCliente JOIN tb_OrdemServico OS ON V.idVeiculo = OS.idVeiculo WHERE OS.idOrdemServico = ?;';
+      return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [(req.params.quoteId)])
+        .then((rows) => {
+          res.status(200).send(rows);
+        })).catch(err => {
+          res.status(200).send(err);
+        })
+  });
 }
