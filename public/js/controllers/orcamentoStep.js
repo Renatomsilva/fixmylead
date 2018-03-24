@@ -14,10 +14,10 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
 
     var req = {
       method: 'POST',
-      url: '/orcamento/update',
+      url: '/send',
       dataType: 'json',
       data: {
-        idOrdemServico : parseInt(orcamento.idOrdemServico),
+        idQuote : parseInt(orcamento.idOrdemServico),
         idStatus : status
       }
     }
@@ -25,10 +25,9 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
     return $http(req)
       .then(function (res) {
         if(res.data.success){
-          toastr.success('Carro cadastrado com sucesso', 'Sucesso');
-          
+          toastr.success('Status alterado com sucesso', 'Sucesso');
         }else
-          toastr.success('Erro ao cadastrar o carro', 'Sucesso');
+          toastr.success('Erro ao alterar o status', 'Sucesso');
       })
       .catch(function (err) {
         console.log(err);

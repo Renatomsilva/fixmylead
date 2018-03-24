@@ -53,7 +53,9 @@ module.exports = function (app) {
             return new Promise(function (resolve, reject) {
                 new SMS({ number: data, message: this.message });
                     mensagem.send()
-                    .then(sucess => console.log(sucess))
+                    .then(function(res) {
+
+                    })
                     .catch(err => console.log)
             });
         }
