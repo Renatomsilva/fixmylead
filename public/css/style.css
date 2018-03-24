@@ -217,6 +217,13 @@ margin-left: -40px;
   border: 2px solid #E8E8E8;
 }
 
+.font{
+  color : #827575;
+  padding: 0px;
+  font-size : 15px;
+  
+}
+
 .home-car ul .dias{
   color : #827575;
   padding: 5px;
@@ -233,4 +240,18 @@ margin-left: -40px;
   color : #827575;
   padding: 5px;
   margin-left : 50px;
+}
+
+.navbar-header {
+  background: #f2f2f2;
+}
+
+.navbar-center {
+  text-align : center;
+}
+
+
+.nav-botton {
+  text-align : center;
+  background : #f00;
 }

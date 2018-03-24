@@ -3,7 +3,7 @@
       <div class="hero-content-inner">
         <div class="row">
           <div class="col-md-2 col-md-offset-5">
-            <h3 class="page-header">Lista de Veiculos</h1>
+            <h3 class="page-header font" > {{vm.carros.length}} veículos no pátio</h1>
           </div>
           <div class="col-md-2 col-md-offset-5">
               <div class="col-md-6 home-car" ng-repeat="carro in vm.carros">
@@ -11,7 +11,7 @@
                     <div class="media-left all" >
                       <ul class="media-left">
                         <li class="media-left"><img class="media-object car" src="/images/logos/vw-logo.png" alt="..."></li>
-                        <li class="media-left modelo"> {{carro.modelo}}</li>
+                        <li class="media-left modelo font"> {{carro.modelo}}</li>
                         <li class="media-left"><button type="button" ng-click="vm.aceito(vm.orcamento, false)" class="form-control">Não Aceito</button></li>
                       </ul>
                     </div>
@@ -19,20 +19,22 @@
                   <div class="row">
                     <div class="media-left all" >
                         <ul class="media-left">
-                            <li class="media-left ano">{{carro.ano}} / {{carro.ano}}</li>
+                            <li class="media-left ano font">{{carro.ano}} / {{carro.ano}}</li>
                             <li class="media-left placa"> {{carro.placa}}</li>
-                            <li class="media-left dias fa fa-clock"  style="font-size:16px"> 2 dias</li>
+                            <li class="media-left dias fa fa-clock" > 2 dias</li>
                        
                     </div>
                   <div class="row">
                       <div class="media-left all">
                           <ul class="media-left">
-                              <li class="media-left nome fas fa-user"> Ana Lucia</li>
-                              <li class="media-left mecanico fas fa-wrench"> Marcio</li> 
+                              <li class="media-left nome fas fa-user font"> Ana Lucia</li>
+                              <li class="media-left mecanico fas fa-wrench font"> Marcio</li> 
                       </div>
-                    </div>
-              </div>
+                  </div>
+          
+                </div>
           </div>
+          <br><br><br>
         </div>
       </div>
     </div>
