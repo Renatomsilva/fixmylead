@@ -8,6 +8,7 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
 
   vm.save = save;
   vm.search = search;
+  vm.searchId = searchId;
   vm.viewOrcamento = false;
   vm.orcamento = {};
   vm.populateCombos = populateCombos;
