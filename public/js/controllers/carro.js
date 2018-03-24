@@ -29,9 +29,10 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
 
     return $http(req)
       .then(function (res) {
-        if(res.data.success) 
+        if(res.data.success){
           toastr.success('Carro cadastrado com sucesso', 'Sucesso');
-        else
+          vm.carro = {};
+        }else
           toastr.success('Erro ao cadastrar o carro', 'Sucesso');
       })
       .catch(function (err) {
