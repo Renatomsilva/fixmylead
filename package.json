@@ -37,6 +37,7 @@
     "winston": "^2.4.1"
   },
   "devDependencies": {
+    "aws-sdk": "^2.213.1",
     "bluebird": "^3.5.1"
   }
 }

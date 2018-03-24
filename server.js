@@ -25,6 +25,8 @@ process.env.DATABASE_HOST = "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazona
 process.env.DATABASE_USER = "a1vky6b482hhzucr";
 process.env.DATABASE_NAME = "dwiivdjerj47osku";
 process.env.DATABASE_PASSWORD = "w6ht6ps7tkcl9pau";
+process.env.ACCESSKEY = "AKIAJQ3W5M3XO25FDKJQ";
+process.env.SECRET = "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";
 
 app.use(compression());
 app.use(cookieParser());

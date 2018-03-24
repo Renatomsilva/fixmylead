@@ -25,8 +25,13 @@ module.exports = function (app) {
 
     app.get('/carro/:clientId', function (req, res) {
         res.render("carro", {
-            page: { url: 'carro' },
-            clientId : req.params.clientId
+            page: { url: 'carro' }
+        });
+    });
+
+    app.get('/ordem', function (req, res) {
+        res.render("ordem", {
+            page: { url: 'ordem' }
         });
     });
 
