@@ -56,6 +56,31 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
           vm.find = false;
         }
         vm.viewOrcamento = true;
+        if(vm.orcamento && vm.orcamento.idStatus)
+          $scope.selected = vm.orcamento.idStatus.toString();
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
+  }
+
+  function searchId(idVeiculo) {
+    var req = {
+      method: 'GET',
+      url: '/service?idVeiculo=' + idVeiculo,
+      dataType: 'json',
+    }
+
+    return $http(req)
+      .then(function (res) {
+        if(res.data.length){  
+          vm.find = true;
+          vm.orcamento = res.data[0];
+        }
+        else {
+          vm.find = false;
+        }
+        vm.viewOrcamento = true;
         $scope.selected = vm.orcamento.idStatus.toString();
       })
       .catch(function (err) {
@@ -65,6 +90,8 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
 
   function init(){
     vm.orcamento.vehicleId = $location.absUrl().split('/')[4] || null ;
+    if(vm.orcamento && vm.orcamento.vehicleId)
+      vm.searchId(vm.orcamento.vehicleId);
   }
 
   function populateCombos(){
