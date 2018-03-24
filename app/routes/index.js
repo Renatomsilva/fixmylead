@@ -6,8 +6,8 @@ const Connection = require('../config/database');
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        res.render("index", {
-            page: { url: 'index' },
+        res.render("home", {
+            page: { url: 'home' },
         });
     });
 
