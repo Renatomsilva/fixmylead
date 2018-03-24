@@ -29,6 +29,7 @@ class SendSMS {
           return false;
         }
         else
+          console.log(data.MessageId);
           resolve(data.MessageId);
       })
     });
