@@ -4,6 +4,7 @@ const rp = require('request-promise');
 const fs = require('fs');
 const Connection = require('../config/database');
 const Promise = require('bluebird');
+const SMS = require('../helpers/send-sms');
 
 module.exports = function (app) {
     app.post("/client/insert", function (req, res) {
@@ -96,4 +97,59 @@ module.exports = function (app) {
           res.status(200).send(err);
         })
   });
+
+  app.post("/sms/send", function (req, res) {
+        
+    switch (req.body.idStatus) {
+        case 1:
+            this.message = "Teste 1";
+            break;
+        case 2:
+            this.message = "Teste 2";
+            break;
+        case 3:
+            this.message = "Teste 3";
+            break;
+        case 4:
+            this.message = "Teste 4";
+            break;
+        case 5:
+            this.message = "Teste 5";
+            break;
+        case 6:
+            this.message = "Teste 6";
+            break;
+        case 7:
+            this.message = "Teste 7";
+            break;
+        case 8:
+            this.message = "Teste 8";
+            break;
+    }
+
+    var req = {
+        method: 'GET',
+        url: '/phonebyquote?quoteId=' + that.IdQuote,
+        dataType: 'json',
+    }
+
+    var req2 = {
+      method: 'GET',
+      url: '/phonebyquote?quoteId=' + that.IdQuote,
+      dataType: 'json',
+  }
+
+    return 
+        $http(req2)
+        .then(result => {
+          //slkslksk
+          return $http(req)
+        })
+        .then(function (res) {
+            return res.data[0];
+            const message = new SMS({ number: data, message: this.message });
+            return message.send()
+        })
+        .then(sucess => res.status(200).send({success : true , message : 'Status Modificado com Sucesso'}));
+});
 }
