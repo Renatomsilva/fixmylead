@@ -148,15 +148,15 @@ border-radius: 15px;
 background: #fff;
 margin-bottom: 10px;
 padding: 5px;
+width : 350px;
 }
 
 .home-car button {
 border-radius: 15px;
 background: #c70f32;
 color : #fff;
-margin-bottom: 10px;
-padding: 5px;
-margin-left : 15px;
+float : left;
+margin-left : 75px;
 }
 
 
