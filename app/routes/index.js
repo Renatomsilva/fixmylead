@@ -35,5 +35,11 @@ module.exports = function (app) {
             page: { url: 'cliente' },
         });
     });
+
+    app.get('/orcamento/:vehicleId', function (req, res) {
+        res.render("orcamento", {
+            page: { url: 'orcamento' },
+        });
+    });
 }
 

@@ -8,6 +8,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
 
   vm.save = save;
   vm.search = search;
+  vm.newQuote = newQuote;
   vm.viewCarro = false;
   vm.carro = {};
 
@@ -31,7 +32,9 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
       .then(function (res) {
         if(res.data.success){
           toastr.success('Carro cadastrado com sucesso', 'Sucesso');
-          vm.carro = {};
+          setTimeout(() => {
+              window.location = "/orcamento/" + res.data.idVeiculo;
+          }, 1000);
         }else
           toastr.success('Erro ao cadastrar o carro', 'Sucesso');
       })
@@ -65,6 +68,10 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
       .catch(function (err) {
         console.log(err);
       })
+  }
+
+  function newQuote(carro) {
+    window.location = "/orcamento/" + carro.idVeiculo;
   }
 
   function init(){

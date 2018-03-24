@@ -1,0 +1,54 @@
+<div ng-controller="OrcamentoController as vm">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <h3 class="page-header">Pesquisa Ordens de Serviço</h1>
+        </div>
+        <div class="col-md-2 col-md-offset-5">
+            <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
+                <label for="plate">Placa</label>
+                <input type="searchPlace" class="form-control" id="searchPlace" ng-model="vm.query.plate">
+                </br>
+                <button type="submit" class="form-control">Pesquisar</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-show="vm.viewOrcamento">
+        <div class="col-md-2 col-md-offset-5">
+            <h2 class="page-header">Cadastro do Orçamento</h1>
+        </div>
+        <div class="col-md-2 col-md-offset-5">
+            <form class="form-inline" ng-submit="vm.save(vm.orcamento)" name="saveForm">
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" class="form-control" name="description" ng-model="vm.orcamento.descricao">
+                </div>
+                <div class="form-group">
+                    <label for="quote">Orçamento</label>
+                    <input type="text" class="form-control" name="quote" ng-model="vm.orcamento.orcamento">
+                </div>
+                <div class="form-group">
+                    <label for="deadline">Prazo Estimado</label>
+                    <input type="text" class="form-control" name="deadline" ng-model="vm.orcamento.prazoEstimado">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" ng-init="vm.populateCombos()" ng-options="item.idStatus as item.descricao for item in vm.listStatus track by item.idStatus" name="status" ng-model="vm.orcamento.idStatus">
+                            <option value='' selected>--- Selecione o Status ---</option>
+                    </select>
+                </div>
+                <div class="form-group" ng-show="!vm.find">
+                    <button type="submit" class="form-control">Salvar</button>
+                </div>
+                <div class="form-group" ng-show="vm.find">
+                    <button type="submit" class="form-control">Finalizar Orçamento</button>
+                </div>
+            </form>
+        </div>
+        </br>
+        </br>
+        </br>
+        </form>
+        </form>
+    </div>
+</div>
+<script src="js/controllers/orcamento.js"></script>
