@@ -11,7 +11,7 @@ module.exports = function (app) {
         return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.name, req.body.cpf, req.body.email, req.body.phone])
           .then(() => {
             res.status(200).send({
-                'sucess': true,
+                'success': true,
                 'message': 'Cadastro realizado com sucesso!'
             });
           })).catch(err => {
@@ -34,7 +34,7 @@ module.exports = function (app) {
         return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.clientId, req.body.plate, req.body.make, req.body.model, req.body.version, req.body.year])
           .then(() => {
             res.status(200).send({
-                'sucess': true,
+                'success': true,
                 'message': 'Cadastro realizado com sucesso!'
             });
           })).catch(err => {
@@ -57,7 +57,7 @@ module.exports = function (app) {
         return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.description, req.body.quote, req.body.deadline, req.body.vehicleId, req.body.statusId])
           .then(() => {
             res.status(200).send({
-                'sucess': true,
+                'success': true,
                 'message': 'Cadastro realizado com sucesso!'
             });
           })).catch(err => {

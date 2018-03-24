@@ -10,6 +10,33 @@ function CarroController($scope, toastr, $cookies, $http) {
   vm.search = search;
 
   function save(carro) {
+
+    var req = {
+      method: 'POST',
+      url: '/vehicle/insert',
+      dataType: 'json',
+      data: {
+        clientId : 1 , //carro.clientId,
+        plate : carro.plate,
+        make : carro.make,
+        model : carro.model,
+        version : carro.version,
+        year : carro.year,
+      }
+    }
+
+    return $http(req)
+      .then(function (res) {
+        if(res.data.success) 
+          toastr.success('Carro cadastrado com sucesso', 'Sucesso');
+        else
+          toastr.success('Erro ao cadastrar o carro', 'Sucesso');
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
+
+
   }
 
   function search(carro) {
