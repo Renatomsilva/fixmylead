@@ -26,16 +26,14 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
       .then(function (res) {
         if(res.data.success){
           toastr.success('Status alterado com sucesso', 'Sucesso');
+          vm.orcamento.idStatus = res.data.idStatus;
         }else
           toastr.success('Erro ao alterar o status', 'Sucesso');
       })
       .catch(function (err) {
         console.log(err);
       })
-
-
   }
-
 
   function getOrcamento(orcamento) {
 
@@ -61,8 +59,6 @@ function OrcamentoStepController($scope, toastr, $cookies, $http, $location) {
   function compare(status , compare){
       return status === compare ? true : false; 
   }
-
-  
 
   function init(){
     vm.orcamento.idOrdemServico = $location.absUrl().split('/')[4] || null ;

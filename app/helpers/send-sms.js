@@ -19,7 +19,6 @@ class SendSMS {
     };
   }
 
-
   send() {
     var that = this;
     return new Promise(function (resolve, reject) {

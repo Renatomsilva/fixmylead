@@ -11,7 +11,7 @@ module.exports = (function () {
         return instance
 
 
-      const connectionLimit = 10;
+      const connectionLimit = 2;
 
       this.pool = mysql.createPool({
         host: process.env.DATABASE_HOST,
