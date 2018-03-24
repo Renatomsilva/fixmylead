@@ -13,7 +13,7 @@
                       <ul class="media-left">
                         <li class="media-left"><img class="media-object car" src="/images/logos/vw-logo.png" alt="..."></li>
                         <li class="media-left modelo font"> {{carro.modelo}}</li>
-                        <li class="media-left"><button type="button" ng-click="vm.aceito(vm.orcamento, false)" class="form-control">Não Aceito</button></li>
+                        <li class="media-left"><button type="button" ng-click="vm.aceito(vm.orcamento, false)" class="form-control"> {{carro.status}}</button></li>
                       </ul>
                     </div>
                   </div>
@@ -22,7 +22,7 @@
                         <ul class="media-left">
                             <li class="media-left ano font">{{carro.ano}} / {{carro.ano}}</li>
                             <li class="media-left placa"> {{carro.placa}}</li>
-                            <li class="media-left dias fa fa-clock" > 2 dias</li>
+                            <li class="media-left dias fa fa-clock" ng-bind=" vm.setDays(carro.prazoEstimado)" > </li>
                        
                     </div>
                   <div class="row">
