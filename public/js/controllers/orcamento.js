@@ -12,6 +12,7 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
   vm.viewOrcamento = false;
   vm.orcamento = {};
   vm.populateCombos = populateCombos;
+  vm.steps = steps;
 
   function save(orcamento) {
 
@@ -60,6 +61,7 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
           vm.find = false;
           vm.orcamento = {};
           $scope.selected = '';
+          vm.orcamento.vehicleId = $location.absUrl().split('/')[4] || null
         }
         vm.viewOrcamento = true;
         if(vm.orcamento && vm.orcamento.idStatus)
@@ -114,6 +116,10 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
       .catch(function (err) {
         console.log(err);
       })
+  }
+
+  function steps(idOrdemServico){
+    window.location = '/orcamento/' + idOrdemServico + '/step';
   }
 
   init();

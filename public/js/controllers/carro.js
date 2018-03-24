@@ -62,6 +62,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
         else {
           vm.carro = {};
           vm.carro.placa = query.plate ;
+          vm.carro.clientId = $location.absUrl().split('/')[4] || null ;
           vm.find = false;
         }
         vm.viewCarro = true;
@@ -87,7 +88,6 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
         }
         else {
           vm.find = false;
-          vm.carro = {};
         }
         vm.viewCarro = true;
       })
