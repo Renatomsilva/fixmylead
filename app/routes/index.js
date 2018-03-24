@@ -23,9 +23,10 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/carro', function (req, res) {
+    app.get('/carro/:clientId', function (req, res) {
         res.render("carro", {
             page: { url: 'carro' },
+            clientId : req.params.clientId
         });
     });
 }
