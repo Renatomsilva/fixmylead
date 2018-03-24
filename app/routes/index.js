@@ -16,7 +16,7 @@ module.exports = function (app) {
             page: { url: 'loja' },
         });
     });
-    
+
     app.get('/home', function (req, res) {
         res.render("home", {
             page: { url: 'home' },
@@ -38,6 +38,12 @@ module.exports = function (app) {
     app.get('/orcamento/:orcamento/step', function (req, res) {
         res.render("orcamentoStep", {
             page: { url: 'orcamentoStep' },
+        });
+    });
+
+    app.get('/orcamento/:vehicleId', function (req, res) {
+        res.render("orcamento", {
+            page: { url: 'orcamento' },
         });
     });
 }

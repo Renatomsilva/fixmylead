@@ -27,7 +27,7 @@ function ClienteController($scope, toastr, $cookies, $http, $location) {
     return $http(req)
       .then(function (res) {
         if(res.data.success) {
-          toastr.success('cliente cadastrado com sucesso', 'Sucesso');
+          toastr.success('Cliente cadastrado com sucesso', 'Sucesso');
           setTimeout(() => {
               window.location = "/carro/" + res.data.idCliente;
           }, 1000);

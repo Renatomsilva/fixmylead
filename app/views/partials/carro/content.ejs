@@ -1,7 +1,7 @@
 <div ng-controller="CarroController as vm">
   <div class="row">
     <div class="col-md-2 col-md-offset-5">
-      <h3 class="page-header">Pesquisa{{page}}</h1>
+      <h3 class="page-header">Pesquisa Veículo</h1>
     </div>
     <div class="col-md-2 col-md-offset-5">
       <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
@@ -42,7 +42,7 @@
           <button type="submit" class="form-control">Salvar</button>
         </div>
         <div class="form-group" ng-show="vm.find">
-            <button type="submit" class="form-control">Orçamento</button>
+            <button type="button" ng-click="vm.newQuote(vm.carro)" class="form-control">Orçamento</button>
           </div>
         </br>
         </br>
