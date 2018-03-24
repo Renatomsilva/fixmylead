@@ -1,13 +1,15 @@
 angular.module('fixMyLead').controller('ClienteController', ClienteController);
 
-ClienteController.$inject = ['$scope', 'toastr', '$cookies', '$http'];
+ClienteController.$inject = ['$scope', 'toastr', '$cookies', '$http', '$location'];
 
-function ClienteController($scope, toastr, $cookies, $http) {
+function ClienteController($scope, toastr, $cookies, $http, $location) {
 
   var vm = this;
 
   vm.save = save;
-  vm.listaClientes = listaClientes;
+  vm.search = search;
+  vm.newVehicle = newVehicle;
+  vm.viewCliente = false;
 
   function save(cliente) {
 
@@ -16,43 +18,54 @@ function ClienteController($scope, toastr, $cookies, $http) {
       url: '/client/insert',
       dataType: 'json',
       data: {
-        name : cliente.name,
-        plate : cliente.plate,
-        make : cliente.make,
-        model : cliente.model,
-        version : cliente.version,
-        year : cliente.year,
+        name : cliente.nome,
+        email : cliente.email,
+        phone : cliente.telefone
       }
-    }
+    };
 
     return $http(req)
       .then(function (res) {
-        if(res.data.success) 
+        if(res.data.success) {
           toastr.success('cliente cadastrado com sucesso', 'Sucesso');
+          setTimeout(() => {
+              window.location = "/carro/" + res.data.idCliente;
+          }, 1000);
+        }
         else
           toastr.success('Erro ao cadastrar o cliente', 'Sucesso');
       })
       .catch(function (err) {
         console.log(err);
-      })
-
-
+    });
   }
 
-  function listaClientes(cliente) {
+  function search(query) {
     var req = {
       method: 'GET',
-      url: '/client/',
+      url: '/client?email=' + query.email,
       dataType: 'json',
     }
 
     return $http(req)
       .then(function (res) {
-        console.log(res.data);
+        if (res.data.length){
+            vm.find = true;
+            vm.cliente = res.data[0];
+        }
+        else {
+            vm.cliente = { email : query.email };
+            vm.find = false;
+        }
+
+        vm.viewCliente = true;
       })
       .catch(function (err) {
         console.log(err);
-      })
+    });
+  }
 
+  function newVehicle(cliente) {
+        window.location = "/carro/" + cliente.idCliente;
   }
 }

@@ -34,5 +34,11 @@ module.exports = function (app) {
             page: { url: 'ordem' }
         });
     });
+
+    app.get('/cliente', function (req, res) {
+        res.render("cliente", {
+            page: { url: 'cliente' },
+        });
+    });
 }
 

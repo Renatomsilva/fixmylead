@@ -7,21 +7,22 @@ const Promise = require('bluebird');
 
 module.exports = function (app) {
     app.post("/client/insert", function (req, res) {
-        const query = 'INSERT INTO tb_Cliente (nome, email, telefone) VALUES (?, ?, ?);';
+        const query = 'INSERT INTO tb_Cliente (nome, email, telefone) VALUES (?, ?, ?); SELECT LAST_INSERT_ID() AS idCliente;';
         return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [req.body.name, req.body.email, req.body.phone])
-          .then(() => {
+          .then((rows) => {
             res.status(200).send({
                 'success': true,
-                'message': 'Cadastro realizado com sucesso!'
+                'message': 'Cadastro realizado com sucesso!',
+                'idCliente': rows[1][0].idCliente
             });
           })).catch(err => {
             res.status(200).send(err);
           })
     });
 
-    app.get("/client/:name", function (req, res) {
-        const query = 'SELECT nome, email, telefone, dataInclusao FROM tb_Cliente WHERE nome LIKE ?;';
-        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, '%' + [req.params.name] + '%')
+    app.get("/client", function (req, res) {
+        const query = 'SELECT idCliente, nome, email, telefone, dataInclusao FROM tb_Cliente WHERE (nome LIKE ? OR ? is null) AND (email LIKE ? OR ? is null);';
+        return Promise.using(Connection.getSqlConnection(), connection => connection.query(query, [('%' + req.query.clientName + '%' || null), (req.query.clientName || null), ('%' + req.query.email + '%' || null), (req.query.email || null)])
           .then((rows) => {
             res.status(200).send(rows);
           })).catch(err => {
