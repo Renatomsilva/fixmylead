@@ -1,14 +1,14 @@
 <div ng-controller="CarroController as vm">
   <div class="row">
     <div class="col-md-2 col-md-offset-5">
-      <h3 class="page-header">Pesquisa Veículo</h1>
+      <h3 class="page-header fontBig">Pesquisa Veículo</h1>
     </div>
     <div class="col-md-2 col-md-offset-5">
       <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
-        <label for="searchPlace">Placa</label>
-        <input type="searchPlace" class="form-control" id="searchPlace" ng-model="vm.query.plate">
+        <label for="searchPlace font">Placa</label>
+        <input type="searchPlace" class="form-control client-placa" id="searchPlace" ng-model="vm.query.plate">
         </br>
-        <button type="submit" class="form-control">Pesquisar</button>
+        <button type="submit" class="form-control client-search">Pesquisar</button>
       </form>
     </div>
   </div>
