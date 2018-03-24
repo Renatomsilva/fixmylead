@@ -7,6 +7,7 @@ function HomeController($scope, toastr, $cookies, $http) {
     var vm = this;
 
     vm.listaCarros = listaCarros;
+    vm.setDays = setDays;
 
     function listaCarros () {
 
@@ -23,5 +24,12 @@ function HomeController($scope, toastr, $cookies, $http) {
         .catch(function (err) {
           console.log(err);
         })
+    }
+
+    function setDays (hours) {
+      const hoursLeft = hours % 24;
+      const days = (hours - hoursLeft) / 24;
+      
+      return ' ' + days + ' dias e ' + hoursLeft + ' horas';
     }
 }
