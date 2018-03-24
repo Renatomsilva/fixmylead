@@ -32,6 +32,9 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
       .then(function (res) {
         if(res.data.success) {
           toastr.success('Ordem de Serviço cadastrada com sucesso', 'Sucesso');
+          setTimeout(() => {
+            window.location = "/";
+        }, 1000);
         } else
           toastr.success('Erro ao cadastrar o Ordem de Serviço', 'Sucesso');
       })
@@ -55,6 +58,8 @@ function OrcamentoController($scope, toastr, $cookies, $http, $location) {
         }
         else {
           vm.find = false;
+          vm.orcamento = {};
+          $scope.selected = '';
         }
         vm.viewOrcamento = true;
         if(vm.orcamento && vm.orcamento.idStatus)

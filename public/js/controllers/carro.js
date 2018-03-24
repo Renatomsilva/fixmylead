@@ -9,6 +9,7 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
   vm.save = save;
   vm.search = search;
   vm.newQuote = newQuote;
+  vm.searchId = searchId;
   vm.viewCarro = false;
   vm.carro = {};
 
@@ -59,11 +60,36 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
           vm.carro = res.data[0];
         }
         else {
+          vm.carro = {};
           vm.carro.placa = query.plate ;
           vm.find = false;
         }
         vm.viewCarro = true;
         console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
+  }
+
+  function searchId(idCliente) {
+    var req = {
+      method: 'GET',
+      url: '/vehicle?idCliente=' + idCliente,
+      dataType: 'json',
+    }
+
+    return $http(req)
+      .then(function (res) {
+        if(res.data.length){  
+          vm.find = true;
+          vm.carro = res.data[0];
+        }
+        else {
+          vm.find = false;
+          vm.carro = {};
+        }
+        vm.viewCarro = true;
       })
       .catch(function (err) {
         console.log(err);
@@ -76,6 +102,8 @@ function CarroController($scope, toastr, $cookies, $http, $location) {
 
   function init(){
     vm.carro.clientId = $location.absUrl().split('/')[4] || null ;
+    if(vm.carro && vm.carro.clientId)
+      vm.searchId(vm.carro.clientId);
   }
 
   init();
