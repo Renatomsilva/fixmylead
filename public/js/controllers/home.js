@@ -29,7 +29,11 @@ function HomeController($scope, toastr, $cookies, $http) {
     function setDays (hours) {
       const hoursLeft = hours % 24;
       const days = (hours - hoursLeft) / 24;
-      
-      return ' ' + days + ' dias e ' + hoursLeft + ' horas';
+      if( hoursLeft > 0 && days > 0 )
+        return ' ' + days + ' dias e ' + hoursLeft + ' horas';
+      if( hoursLeft > 0 && days <= 0 )
+        return ' ' +  hoursLeft + ' horas';
+      if( hoursLeft <= 0 && days > 0 )
+        return ' ' + days + ' dias ';
     }
 }
