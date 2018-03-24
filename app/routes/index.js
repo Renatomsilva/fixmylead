@@ -46,5 +46,13 @@ module.exports = function (app) {
             page: { url: 'orcamento' },
         });
     });
+
+
+
+    app.get('/orcamento/:orcamento/aceite', function (req, res) {
+        res.render("orcamentoAceite", {
+            page: { url: 'orcamentoAceite' },
+        });
+    });
 }
 

@@ -6,20 +6,31 @@
             <h3 class="page-header">Lista de Veiculos</h1>
           </div>
           <div class="col-md-2 col-md-offset-5">
-              <div class="col-md-6" ng-repeat="carro in vm.carros">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="/orcamento/{{carro.idOrdemServico}}/step">
-                        <img class="media-object car" src="/images/sample/car/car.jpg" alt="...">
-                      </a>
-                    </div>
-                    <div  class="media-body" >
-                       <label for="email">Placa / Veículo</label><br>
-                       <spam> {{carro.placa}} / {{carro.marca}} {{carro.modelo}}</spam><br>
-                       <label for="email">Status</label><br>
-                       <spam>{{carro.status}}</spam>
+              <div class="col-md-6 home-car" ng-repeat="carro in vm.carros">
+                  <div class="row">
+                    <div class="media-left all" >
+                      <ul class="media-left">
+                        <li class="media-left"><img class="media-object car" src="/images/logos/vw-logo.png" alt="..."></li>
+                        <li class="media-left modelo"> {{carro.modelo}}</li>
+                        <li class="media-left"><button type="button" ng-click="vm.aceito(vm.orcamento, false)" class="form-control">Não Aceito</button></li>
+                      </ul>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="media-left all" >
+                        <ul class="media-left">
+                            <li class="media-left ano">{{carro.ano}} / {{carro.ano}}</li>
+                            <li class="media-left placa"> {{carro.placa}}</li>
+                            <li class="media-left dias fa fa-clock"  style="font-size:16px"> 2 dias</li>
+                       
+                    </div>
+                  <div class="row">
+                      <div class="media-left all">
+                          <ul class="media-left">
+                              <li class="media-left nome fas fa-user"> Ana Lucia</li>
+                              <li class="media-left mecanico fas fa-wrench"> Marcio</li> 
+                      </div>
+                    </div>
               </div>
           </div>
         </div>

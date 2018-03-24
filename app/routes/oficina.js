@@ -121,51 +121,28 @@ module.exports = function (app) {
 
     switch (idStatus) {
       case 1:
-        mensagem = `Olá ${name}, obrigado pela preferência!
-        Logo iniciaremos a análise e enviaremos um orçamento para seu ${make} ${model}!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, obrigado pela preferência! Logo iniciaremos a análise e enviaremos um orçamento para seu ${make} ${model}! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 2:
-        mensagem = `Olá ${name}, iniciamos a análise do seu veículo!
-        Nas próximas horas enviaremos seu orçamento!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, iniciamos a análise do seu veículo! Nas próximas horas enviaremos seu orçamento! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 3:
-        mensagem = `Olá ${name}, o orçamento do seu ${make} ${model} 
-        pode ser visualizado aqui: http://www.globo.com
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, o orçamento do seu ${make} ${model} pode ser visualizado aqui: http://www.globo.com Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 4:
-        mensagem = `Olá ${name}, conforme a negativa do aceite do orçamento, 
-        seu veículo ${make} ${model} está aguardando a sua retirada!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, conforme a negativa do aceite do orçamento, seu veículo ${make} ${model} está aguardando a sua retirada! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 5:
-        mensagem = `Olá ${name}, iniciamos o conserto do seu ${make} ${model}!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, iniciamos o conserto do seu ${make} ${model}! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 6:
-        mensagem = `Olá ${name}, infelizmente tivemos que fazer uma pausa no andamento do seu ${make} ${model}
-        por falta de peças! Mas não se preocupe, elas já foram encomendadas e estão à caminho!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, infelizmente tivemos que fazer uma pausa no andamento do seu ${make} ${model} por falta de peças! Mas não se preocupe, elas já foram encomendadas e estão à caminho! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 7:
-        mensagem =  `Olá ${name}, o conserto do seu ${make} ${model} está em andamento!
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem =  `Olá ${name}, o conserto do seu ${make} ${model} está em andamento! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 8:
-        mensagem = `Olá ${name}, pronto! 
-        Concluímos o conserto do seu ${make} ${model}!
-        Estamos abertos de Segunda à Sexta das 8h às 18h e aos Sábados das 8h às 13h
-        Mecânica FixMyLead
-        Pwd by Webmotors`;
+        mensagem = `Olá ${name}, pronto! Concluímos o conserto do seu ${make} ${model}! Estamos abertos de Segunda à Sexta das 8h às 18h e aos Sábados das 8h às 13h Mecânica FixMyLead Pwd by Webmotors`;
         break;
     }
 
