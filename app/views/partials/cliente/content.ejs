@@ -1,29 +1,48 @@
-<div class="container" ng-controller="ClienteController as vm" ng-init="vm.listaClientes()">
-    <div class="hero-content">
-      <div class="hero-content-inner">
-        <div class="row">
-          <div class="col-md-2 col-md-offset-5">
-            <h3 class="page-header">Lista de Veiculos</h1>
-          </div>
-          <div class="col-md-2 col-md-offset-5">
-              <div class="col-md-6" ng-repeat="carro in vm.carros">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object car" src="/images/sample/car/car.jpg" alt="...">
-                      </a>
-                    </div>
-                    <div  class="media-body" >
-                       <label for="email">Placa / Modelo</label><br>
-                       <spam> {{carro.placa}} / {{carro.modelo}}</spam><br>
-                       <label for="email">Status</label><br>
-                       <spam>{{carro.status}}</spam>
-                    </div>
-                  </div>
-              </div>
-          </div>
+<div ng-controller="ClienteController as vm">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <h3 class="page-header">Pesquisa{{page}}</h1>
         </div>
-      </div>
+        <div class="col-md-2 col-md-offset-5">
+            <form class="form-inline" ng-submit="vm.search(vm.query)" name="searchForm">
+                <label for="email">Email</label>
+                <input type="searchPlace" class="form-control" id="searchPlace" ng-model="vm.query.email">
+                </br>
+                <button type="submit" class="form-control">Pesquisar</button>
+            </form>
+        </div>
     </div>
-  </div>
-  <script src="js/controllers/home.js"></script>
+    <div class="row" ng-show="vm.viewCliente">
+        <div class="col-md-2 col-md-offset-5">
+            <h2 class="page-header">Cadastro do Cliente</h1>
+        </div>
+        <div class="col-md-2 col-md-offset-5">
+            <form class="form-inline" ng-submit="vm.save(vm.cliente)" name="saveForm">
+                <div class="form-group">
+                    <label for="marca">Nome</label>
+                    <input type="text" class="form-control" name="nome" ng-model="vm.cliente.nome">
+                </div>
+                <div class="form-group">
+                    <label for="marca">Email</label>
+                    <input type="text" class="form-control" name="email" ng-model="vm.cliente.email">
+                </div>
+                <div class="form-group">
+                    <label for="marca">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" ng-model="vm.cliente.telefone">
+                </div>
+                <div class="form-group" ng-show="!vm.find">
+                    <button type="submit" class="form-control">Salvar</button>
+                </div>
+                <div class="form-group" ng-show="vm.find">
+                      <button type="button" ng-click="vm.newVehicle(vm.cliente)" class="form-control">Cadastrar Veículo</button>
+                </div>
+            </form>
+        </div>
+        </br>
+        </br>
+        </br>
+        </form>
+        </form>
+    </div>
+</div>
+<script src="js/controllers/cliente.js"></script>

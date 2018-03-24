@@ -29,5 +29,11 @@ module.exports = function (app) {
             clientId : req.params.clientId
         });
     });
+
+    app.get('/cliente', function (req, res) {
+        res.render("cliente", {
+            page: { url: 'cliente' },
+        });
+    });
 }
 
