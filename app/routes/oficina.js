@@ -127,7 +127,7 @@ module.exports = function (app) {
         mensagem = `Olá ${name}, iniciamos a análise do seu veículo! Nas próximas horas enviaremos seu orçamento! Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 3:
-        mensagem = `Olá ${name}, o orçamento do seu ${make} ${model} pode ser visualizado aqui: http://localhost:4000/orcamento/${idQuote}/aceite Mecânica FixMyLead Pwd by Webmotors`;
+        mensagem = `Olá ${name}, o orçamento do seu ${make} ${model} pode ser visualizado aqui: https://fixmylead.herokuapp.com/orcamento/${idQuote}/aceite Mecânica FixMyLead Pwd by Webmotors`;
         break;
       case 4:
         mensagem = `Olá ${name}, conforme a negativa do aceite do orçamento, seu veículo ${make} ${model} está aguardando a sua retirada! Mecânica FixMyLead Pwd by Webmotors`;
@@ -148,13 +148,13 @@ module.exports = function (app) {
 
     var req = {
       method: 'GET',
-      url: 'http://localhost:4000/phonebyquote?idQuote=' + idQuote,
+      url: 'https://fixmylead.herokuapp.com/phonebyquote?idQuote=' + idQuote,
       json: true
     }
 
     var req2 = {
       method: 'POST',
-      uri: 'http://localhost:4000/updatestatus',
+      uri: 'https://fixmylead.herokuapp.com/updatestatus',
       json: true,
       body: {
         'idStatus': idStatus,
