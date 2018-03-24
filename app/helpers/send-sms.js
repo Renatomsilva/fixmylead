@@ -24,7 +24,10 @@ class SendSMS {
     return new Promise(function (resolve, reject) {
       that.sns.publish(that.params, function (err, data) {
         if (err)
-          throw err;
+        {
+          console.log(err);
+          return false;
+        }
         else
           resolve(data.MessageId);
       })
