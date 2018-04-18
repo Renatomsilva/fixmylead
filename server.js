@@ -25,8 +25,9 @@ process.env.DATABASE_HOST = "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazona
 process.env.DATABASE_USER = "a1vky6b482hhzucr";
 process.env.DATABASE_NAME = "dwiivdjerj47osku";
 process.env.DATABASE_PASSWORD = "w6ht6ps7tkcl9pau";
-process.env.ACCESSKEY = "AKIAJD7FRHLIBPD26MJQ";
-process.env.SECRET = "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";
+process.env.ACCESSKEY = "AKIAIUQ3XIDH5X66QB7Q";
+process.env.SECRET = "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";
+process.env.TOPIC = 'arn:aws:sns:us-east-1:244096970702:fixmylead';
 
 
 app.use(compression());
